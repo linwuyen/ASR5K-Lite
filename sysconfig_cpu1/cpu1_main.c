@@ -1,72 +1,87 @@
-//
-// Included Files
-//
-// Make sure to include "board.h" to use SysConfig
-//
 #include "driverlib.h"
 #include "device.h"
 #include "board.h"
+#include "sci_drv.h"
+
+#define SCI_LINE_BUFFER_SIZE 64U
 
 uint16_t CPU1HB;
-//
-// Main
-//
-void main(void)
+
+static void SCI_WriteString(const char *text)
 {
-    //
-    // Initialize device clock and peripherals
-    //
-    Device_init();
-
-    //
-    // Boot CPU2 core
-    //
-    Device_bootCPU2(BOOT_MODE_CPU2);
-
-    //
-    // ASR v0.1 architecture keeps CM disabled.
-    //
-
-    //
-    // Initialize GPIO
-    //
-    Device_initGPIO();
-
-    //
-    // Initialize settings from SysConfig
-    //
-    Board_init();
-
-    //
-    // Initialize PIE and clear PIE registers. Disables CPU interrupts.
-    //
-    Interrupt_initModule();
-
-    //
-    // Initialize the PIE vector table with pointers to the shell Interrupt
-    // Service Routines (ISR).
-    //
-    Interrupt_initVectorTable();
-
-    //
-    // Enable Global Interrupt (INTM) and realtime interrupt (DBGM)
-    //
-    EINT;
-    ERTM;
-
-    //
-    // Loop Forever
-    //
-    for(;;)
+    while(*text != '\0')
     {
-        //
-        // Add CPU1 application code here
-        //
-        CPU1HB++;
-
+        SCI_WriteByte((uint16_t)*text);
+        text++;
     }
 }
 
-//
-// End of File
-//
+void main(void)
+{
+    uint16_t lineBuffer[SCI_LINE_BUFFER_SIZE];
+    uint16_t lineLength = 0U;
+    uint16_t data;
+    uint16_t i;
+    bool ignoreLineFeed = false;
+
+    Device_init();
+    Device_initGPIO();
+    Board_init();
+
+    Interrupt_initModule();
+    Interrupt_initVectorTable();
+
+    SCI_Init();
+
+    for(;;)
+    {
+
+        CPU1HB++;
+
+        if(SCI_isDataAvailableNonFIFO(SCIA_BASE))
+        {
+            data = SCI_ReadByte();
+
+            if(ignoreLineFeed && (data == '\n'))
+            {
+                ignoreLineFeed = false;
+                continue;
+            }
+
+            ignoreLineFeed = false;
+
+            if((data == '\r') || (data == '\n'))
+            {
+                SCI_WriteString("\r\nRX: ");
+
+                for(i = 0U; i < lineLength; i++)
+                {
+                    SCI_WriteByte(lineBuffer[i]);
+                }
+
+                SCI_WriteString("\r\n");
+                lineLength = 0U;
+                ignoreLineFeed = (data == '\r');
+            }
+            else if((data == '\b') || (data == 0x7FU))
+            {
+                if(lineLength > 0U)
+                {
+                    lineLength--;
+                    SCI_WriteString("\b \b");
+                }
+            }
+            else if(lineLength < SCI_LINE_BUFFER_SIZE)
+            {
+                lineBuffer[lineLength] = data;
+                lineLength++;
+                SCI_WriteByte(data);
+            }
+            else
+            {
+                lineLength = 0U;
+                SCI_WriteString("\r\nERR: LINE TOO LONG\r\n");
+            }
+        }
+    }
+}

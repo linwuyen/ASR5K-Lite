@@ -56,7 +56,6 @@
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.OPT_LEVEL.1904765914" name="Optimization level (--opt_level, -O)" superClass="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.OPT_LEVEL" useByScannerDiscovery="false" value="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.OPT_LEVEL.off" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.DEFINE.1820948630" name="Pre-define NAME (--define, -D)" superClass="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.DEFINE" valueType="definedSymbols">
-									
 									<listOptionValue builtIn="false" value="_FLASH"/>
 									<listOptionValue builtIn="false" value="DEBUG"/>
 									<listOptionValue builtIn="false" value="CPU2"/>
@@ -96,7 +95,6 @@
 							<tool id="com.ti.ccstudio.buildDefinitions.sysConfig.313544348" name="SysConfig" superClass="com.ti.ccstudio.buildDefinitions.sysConfig">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.sysConfig.PRODUCTS.528684269" name="Root system config meta data file in a product or SDK (-s, --product)" superClass="com.ti.ccstudio.buildDefinitions.sysConfig.PRODUCTS" useByScannerDiscovery="false" valueType="stringList">
 									<listOptionValue builtIn="false" value="C:/ti/c2000/C2000Ware_6_00_01_00/.metadata/sdk.json"/>
-									
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.sysConfig.DEVICE.1122770851" name="Name of the device as defined in the core SOC data (-d, --device)" superClass="com.ti.ccstudio.buildDefinitions.sysConfig.DEVICE" useByScannerDiscovery="false" value="F2838x" valueType="string"/>
 								<option id="com.ti.ccstudio.buildDefinitions.sysConfig.CONTEXT.1578365055" name="Name of the context (core name or 'system') to target (-e, --context)" superClass="com.ti.ccstudio.buildDefinitions.sysConfig.CONTEXT" useByScannerDiscovery="false" value="CPU2" valueType="string"/>
@@ -165,7 +163,6 @@
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.OPT_LEVEL.218015567" name="Optimization level (--opt_level, -O)" superClass="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.OPT_LEVEL" useByScannerDiscovery="false" value="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.OPT_LEVEL.off" valueType="enumerated"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.DEFINE.1495904360" name="Pre-define NAME (--define, -D)" superClass="com.ti.ccstudio.buildDefinitions.C2000_22.6.compilerID.DEFINE" valueType="definedSymbols">
-									
 									<listOptionValue builtIn="false" value="CPU2"/>
 									<listOptionValue builtIn="false" value="RAM"/>
 									<listOptionValue builtIn="false" value="DEBUG"/>
@@ -205,7 +202,6 @@
 							<tool id="com.ti.ccstudio.buildDefinitions.sysConfig.180606501" name="SysConfig" superClass="com.ti.ccstudio.buildDefinitions.sysConfig">
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.ti.ccstudio.buildDefinitions.sysConfig.PRODUCTS.881808127" name="Root system config meta data file in a product or SDK (-s, --product)" superClass="com.ti.ccstudio.buildDefinitions.sysConfig.PRODUCTS" useByScannerDiscovery="false" valueType="stringList">
 									<listOptionValue builtIn="false" value="C:/ti/c2000/C2000Ware_6_00_01_00/.metadata/sdk.json"/>
-									
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.sysConfig.DEVICE.1421546135" name="Name of the device as defined in the core SOC data (-d, --device)" superClass="com.ti.ccstudio.buildDefinitions.sysConfig.DEVICE" useByScannerDiscovery="false" value="F2838x" valueType="string"/>
 								<option id="com.ti.ccstudio.buildDefinitions.sysConfig.CONTEXT.1038090107" name="Name of the context (core name or 'system') to target (-e, --context)" superClass="com.ti.ccstudio.buildDefinitions.sysConfig.CONTEXT" useByScannerDiscovery="false" value="CPU2" valueType="string"/>
@@ -227,4 +223,3 @@
 	<storageModule moduleId="scannerConfiguration"/>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 </cproject>
-
